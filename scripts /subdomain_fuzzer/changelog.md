@@ -20,5 +20,10 @@
 - Fixed : [ ! ] FileNotFound Exception
     - implemented abs self diretory detection
     - it will detect `subdomain.txt` directory if its stored on the current directory the script is running from 
+
+- Added : Output save txt
+    - saves the terminal output and status in txt file 
+    - the file is created automatically and gets stored to the working directory
+    
  
  > Status (Running) script is now in a running state 
