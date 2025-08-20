@@ -1,6 +1,7 @@
 
 import requests
 
+import os
 
 from requests.exceptions import ConnectionError, Timeout, InvalidURL, RequestException
 
@@ -64,5 +65,10 @@ def run_scanner(domain,payload_file,threads=10):
 if __name__ == "__main__": 
     domain = "example.com"
     payload_file = "subdomain.txt"
+
+
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+    payload_file = os.path.join(BASE_DIR,"subdomain.txt")
 
     run_scanner(domain,payload_file,threads=10) 
