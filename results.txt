@@ -1,0 +1,8 @@
+[+] http://www.example.com - Status : 200
+[+] https://www.example.com - Status : 200
+[-] http://mail.example.com - Failed to Connect
+[-] https://mail.example.com - Failed to Connect
+[-] http://docs.example.com - Failed to Connect
+[-] https://docs.example.com - Failed to Connect
+[-] http://blog.example.com - Failed to Connect
+[-] https://blog.example.com - Failed to Connect
