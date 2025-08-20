@@ -44,7 +44,7 @@ def fuzz_subdomain(domain,subdomain):
     return results
 
 
-def run_scanner(domain,payload_file,threads=10): 
+def run_scanner(domain,payload_file,threads=10,output="results.txt"): 
     """subdomain fuzzer"""
 
     subdomains = load_subdomains(payload_file)
@@ -52,14 +52,18 @@ def run_scanner(domain,payload_file,threads=10):
     if not subdomains: 
         return
     
-
+    results = []
     with ThreadPoolExecutor(max_workers=threads) as executor: 
         futures = [executor.submit(fuzz_subdomain,domain,sub) for sub in subdomains]
 
         for future in futures:
             for result in future.result():
                 print(result)
-
+                results.append(result)
+    
+    with open(output,'w') as f:
+        f.write("\n".join(results))
+        print(f"\n [+] Results pushed to {output}")
 
 
 if __name__ == "__main__": 
@@ -71,4 +75,4 @@ if __name__ == "__main__":
 
     payload_file = os.path.join(BASE_DIR,"subdomain.txt")
 
-    run_scanner(domain,payload_file,threads=10) 
+    run_scanner(domain,payload_file,threads=10,output="results.txt") 
